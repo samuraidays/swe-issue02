@@ -19,8 +19,8 @@
       <input type="button" name="exec" value=実行 id="button">
       <!-- <button type="submit">実行</button> -->
     </form>
-    <div id="div1">【出力】</div>
-    <div id="fizzbuzz"></div>
+    <div id="div0">【出力】</div>
+    <div id="div1"></div>
 </body>
 
 <script>
@@ -33,21 +33,21 @@
     const fragment = document.createDocumentFragment();
 
     for (let num = 1; num < 100; num++){
-      if (num % fizznum === 0 && num % buzznum === 0){
+      if (num % fizzNum === 0 && num % buzzNum === 0){
         str="FizzBuzz";
         const newDiv = document.createElement("div");
         const newContent = document.createTextNode(str + " " + num);
         newDiv.appendChild(newContent);
         fragment.appendChild(newDiv);
 
-      } else if (num % fizznum === 0) {
+      } else if (num % fizzNum === 0) {
         str="Fizz";
         const newDiv = document.createElement("div");
         const newContent = document.createTextNode(str + " " + num);
         newDiv.appendChild(newContent);
         fragment.appendChild(newDiv);
 
-      } else if (num % buzznum === 0) {
+      } else if (num % buzzNum === 0) {
         str="Buzz";
         const newDiv = document.createElement("div");
         const newContent = document.createTextNode(str + " " + num);
@@ -60,6 +60,7 @@
     if(remove.getElementsByTagName('div').length > 0){
       remove.innerHTML = '';
      }
+    
     document.getElementById('div1').appendChild(fragment);
   }
 
@@ -70,10 +71,11 @@
 
     const remove = document.getElementById('div1');
     if(remove.getElementsByTagName('div').length > 0){
-      remove.removeChild(remove.children[0]);
+      remove.innerHTML = '';
      }
+   
 
-    if (pattern.test(fizznum) == false || pattern.test(buzznum) == false){
+     if (pattern.test(fizzNum) == false || pattern.test(buzzNum) == false){
       const div1 = document.getElementById('div1');
       const newdiv = document.createElement('div');
       newdiv.textContent = '整数値を入力して下さい'; 
