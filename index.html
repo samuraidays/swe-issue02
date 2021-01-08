@@ -33,23 +33,22 @@
     const fragment = document.createDocumentFragment();
 
     for (let num = 1; num < 100; num++){
+      const newDiv = document.createElement("div");
       if (num % fizzNum === 0 && num % buzzNum === 0){
         str="FizzBuzz";
-        const newDiv = document.createElement("div");
+        
         const newContent = document.createTextNode(str + " " + num);
         newDiv.appendChild(newContent);
         fragment.appendChild(newDiv);
 
       } else if (num % fizzNum === 0) {
         str="Fizz";
-        const newDiv = document.createElement("div");
         const newContent = document.createTextNode(str + " " + num);
         newDiv.appendChild(newContent);
         fragment.appendChild(newDiv);
 
       } else if (num % buzzNum === 0) {
         str="Buzz";
-        const newDiv = document.createElement("div");
         const newContent = document.createTextNode(str + " " + num);
         newDiv.appendChild(newContent);
         fragment.appendChild(newDiv);
@@ -75,11 +74,11 @@
      }
    
 
-     if (pattern.test(fizzNum) == false || pattern.test(buzzNum) == false){
+     if (pattern.test(fizzNum) === false || pattern.test(buzzNum) === false){
       const div1 = document.getElementById('div1');
-      const newdiv = document.createElement('div');
-      newdiv.textContent = '整数値を入力して下さい'; 
-      div1.appendChild( newdiv );
+      const newDiv = document.createElement('div');
+      newDiv.textContent = '整数値を入力して下さい'; 
+      div1.appendChild( newDiv );
       return false
     }
     submitForm();
