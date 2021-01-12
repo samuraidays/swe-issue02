@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>課題</title>
+  <meta name="description" content="ページの解説" />
+</head>
+
+<body>
+  <header class="header">
+  <!-- /.header --></header>
+
+  <h2>FizzBuzz問題</h2>
+    <form action="" method="post" id="form1">
+      <label>FizzNum</label>
+      <input id="fizznum" type="number" name="FizzNum"><br>
+      <label>BuzzNum</label>
+      <input id="buzznum" type="number" name="BuzzNum"><br>
+      <input type="button" name="exec" value=実行 id="button">
+      <!-- <button type="submit">実行</button> -->
+    </form>
+    <div id="div0">【出力】</div>
+    <div id="div1"></div>
+</body>
+
+<script>
+  const form1 = document.getElementById('form1');
+
+  function submitForm() {
+    const fizzNum = document.forms['form1'].elements['FizzNum'].value;
+    const buzzNum = document.forms['form1'].elements['BuzzNum'].value;
+
+    const fragment = document.createDocumentFragment();
+
+    for (let num = 1; num < 100; num++){
+      const newDiv = document.createElement("div");
+      if (num % fizzNum === 0 && num % buzzNum === 0){
+        str="FizzBuzz";
+        
+        const newContent = document.createTextNode(str + " " + num);
+        newDiv.appendChild(newContent);
+        fragment.appendChild(newDiv);
+
+      } else if (num % fizzNum === 0) {
+        str="Fizz";
+        const newContent = document.createTextNode(str + " " + num);
+        newDiv.appendChild(newContent);
+        fragment.appendChild(newDiv);
+
+      } else if (num % buzzNum === 0) {
+        str="Buzz";
+        const newContent = document.createTextNode(str + " " + num);
+        newDiv.appendChild(newContent);
+        fragment.appendChild(newDiv);
+
+      }
+    }
+    const remove = document.getElementById('div1');
+    if(remove.getElementsByTagName('div').length > 0){
+      remove.innerHTML = '';
+     }
+    
+    document.getElementById('div1').appendChild(fragment);
+  }
+
+  function isNumber(){
+    const pattern = /^([1-9]\d*|0)$/;
+    const fizzNum = document.forms['form1'].elements['FizzNum'].value;
+    const buzzNum = document.forms['form1'].elements['BuzzNum'].value;
+
+    const remove = document.getElementById('div1');
+    if(remove.getElementsByTagName('div').length > 0){
+      remove.innerHTML = '';
+     }
+   
+
+     if (pattern.test(fizzNum) === false || pattern.test(buzzNum) === false){
+      const div1 = document.getElementById('div1');
+      const newDiv = document.createElement('div');
+      newDiv.textContent = '整数値を入力して下さい'; 
+      div1.appendChild( newDiv );
+      return false
+    }
+    submitForm();
+  }
+
+  button.addEventListener( "click" , isNumber );
+
+</script>
+
+</html>
